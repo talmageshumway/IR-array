@@ -12,7 +12,6 @@ human_max = 43
 fever_min = 38
 drone_min = 44
 drone_max = 100
-value = 0
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
@@ -66,13 +65,13 @@ def plot_update():
     fig.canvas.blit(ax.bbox) # draw background
     fig.canvas.flush_events() # show the new image
     fig.show()
-    return
+    return value
 
 t_array = []
 while True:
     t1 = time.monotonic() # for determining frame rate
     try:
-        plot_update() # update plot
+        value = plot_update() # update plot
     except:
         continue
     # approximating frame rate
