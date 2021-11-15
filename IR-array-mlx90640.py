@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from scipy import ndimage
 import argparse
 
-# define ranges
+# define range
 human_min = 33
 human_max = 41
 fever_min = 37
