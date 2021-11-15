@@ -104,16 +104,16 @@ while True:
       print(value)
     else:
       drone = 0
-    if(human == 4)
+    if(human == 4):
       print('Human detected')
       human = 0
-    if(fever == 4)
+    if(fever == 4):
       print('Fever detected')
       fever = 0
-    if(drone == 2)
+    if(drone == 2):
       print('Drone detected')
       drone = 0    
-    if(count == 100)
+    if(count == 100):
       human = 0
       fever = 0
       drone = 0
