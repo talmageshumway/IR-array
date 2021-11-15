@@ -60,7 +60,7 @@ def plot_update():
     cbar.on_mappable_changed(therm1) # update colorbar range
     plt.pause(0.001)
     ax.draw_artist(therm1) # draw new thermal image
-    if(vmax > human_min && vmax < human_max):
+    if(vmax > human_min and vmax < human_max):
       #human: alert user
       #human = 1
       if(vmax > fever_min):
@@ -72,13 +72,13 @@ def plot_update():
     else
       human = 0
       fever = 0
-    if(vmax > drone_min && vmax < drone_max):
+    if(vmax > drone_min and vmax < drone_max):
       #drone detected: alert user
       drone = 1
       textMaxValue.set_text("Drone detected")
     else
       drone = 0
-    if( human == 0 && drone == 0)
+    if( human == 0 and drone == 0)
       textMaxValue.set_text(str(np.round(np.max(data_array), 1)))
     fig.canvas.blit(ax.bbox) # draw background
     fig.canvas.flush_events() # show the new image
