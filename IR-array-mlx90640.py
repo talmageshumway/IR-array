@@ -15,6 +15,7 @@ drone_max = 100
 human = 0
 fever = 0
 drone = 0
+count = 0
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
@@ -117,3 +118,4 @@ while True:
       human = 0
       fever = 0
       drone = 0
+    count += 1
