@@ -12,7 +12,7 @@ human_max = 43
 fever_min = 38
 drone_min = 44
 drone_max = 100
-
+data_array
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
@@ -79,17 +79,17 @@ while True:
     if len(t_array)>10:
         t_array = t_array[1:] # recent times for frame rate approx
     print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
-    
-    if(vmax > human_min and vmax < human_max):
+    hightemp=np.max(data_array)
+    if(hightemp > human_min and hightemp < human_max):
       #human: alert user
       human = 1
-      if(vmax > fever_min):
+      if(hightemp > fever_min):
         #human with fever: alert user
         fever = 1
     else:
       human = 0
       fever = 0
-    if(vmax > drone_min and vmax < drone_max):
+    if(hightemp > drone_min and hightemp < drone_max):
       #drone detected: alert user
       drone = 1
     else:
