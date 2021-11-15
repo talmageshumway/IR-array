@@ -78,7 +78,7 @@ def plot_update():
       textMaxValue.set_text("Drone detected")
     else:
       drone = 0
-    if( human == 0 and drone == 0)
+    if(human == 0 and drone == 0):
       textMaxValue.set_text(str(np.round(np.max(data_array), 1)))
     fig.canvas.blit(ax.bbox) # draw background
     fig.canvas.flush_events() # show the new image
