@@ -66,20 +66,19 @@ def plot_update():
       if(vmax > fever_min):
         #human with fever: alert user
         fever = 1
-        textMaxValue.set_text('Fever detected')
+        print('Fever detected')
       else:
-        textMaxValue.set_text('Human detected')
+        print('Human detected')
     else:
       human = 0
       fever = 0
     if(vmax > drone_min and vmax < drone_max):
       #drone detected: alert user
       drone = 1
-      textMaxValue.set_text('Drone detected')
+      print('Drone detected')
     else:
       drone = 0
-    if(human == 0 and drone == 0):
-      textMaxValue.set_text(str(np.round(np.max(data_array), 1)))
+    textMaxValue.set_text(str(np.round(np.max(data_array), 1)))
     fig.canvas.blit(ax.bbox) # draw background
     fig.canvas.flush_events() # show the new image
     fig.show()
