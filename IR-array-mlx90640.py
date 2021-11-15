@@ -66,7 +66,6 @@ def plot_update():
       if(vmax > fever_min):
         #human with fever: alert user
         fever = 1
-      else:
     else:
       human = 0
       fever = 0
