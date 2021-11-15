@@ -8,9 +8,9 @@ import argparse
 
 # define range
 human_min = 33
-human_max = 41
-fever_min = 37
-drone_min = 41
+human_max = 43
+fever_min = 38
+drone_min = 44
 drone_max = 100
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
@@ -66,16 +66,16 @@ def plot_update():
       if(vmax > fever_min):
         #human with fever: alert user
         fever = 1
-        textMaxValue.set_text("Fever detected")
+        textMaxValue.set_text('Fever detected')
       else:
-        textMaxValue.set_text("Human detected")
+        textMaxValue.set_text('Human detected')
     else:
       human = 0
       fever = 0
     if(vmax > drone_min and vmax < drone_max):
       #drone detected: alert user
       drone = 1
-      textMaxValue.set_text("Drone detected")
+      textMaxValue.set_text('Drone detected')
     else:
       drone = 0
     if(human == 0 and drone == 0):
