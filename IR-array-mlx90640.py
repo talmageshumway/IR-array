@@ -67,16 +67,16 @@ def plot_update():
         #human with fever: alert user
         fever = 1
         textMaxValue.set_text("Fever detected")
-      else
+      else:
         textMaxValue.set_text("Human detected")
-    else
+    else:
       human = 0
       fever = 0
     if(vmax > drone_min and vmax < drone_max):
       #drone detected: alert user
       drone = 1
       textMaxValue.set_text("Drone detected")
-    else
+    else:
       drone = 0
     if( human == 0 and drone == 0)
       textMaxValue.set_text(str(np.round(np.max(data_array), 1)))
