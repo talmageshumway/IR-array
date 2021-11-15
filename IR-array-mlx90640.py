@@ -6,6 +6,13 @@ import matplotlib.pyplot as plt
 from scipy import ndimage
 import argparse
 
+# define range
+human_min = 33
+human_max = 43
+fever_min = 38
+drone_min = 44
+drone_max = 100
+
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
