@@ -87,11 +87,15 @@ while True:
       if(value > fever_min):
         #human with fever: alert user
         fever = 1
+        print('Fever detected')
+      else:
+        print('Human detected')
     else:
       human = 0
       fever = 0
     if(value > drone_min and value < drone_max):
       #drone detected: alert user
       drone = 1
+      print('Drone detected')
     else:
       drone = 0
