@@ -78,7 +78,7 @@ while True:
     t_array.append(time.monotonic()-t1)
     if len(t_array)>10:
         t_array = t_array[1:] # recent times for frame rate approx
-    print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
+    #print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
     
     if(value > human_min and value < human_max):
       #human: alert user
@@ -87,8 +87,10 @@ while True:
         #human with fever: alert user
         fever = 1
         print('Fever detected')
+        print(value)
       else:
         print('Human detected')
+        print(value)
     else:
       human = 0
       fever = 0
@@ -98,5 +100,6 @@ while True:
       #drone detected: alert user
       drone = 1
       print('Drone detected')
+      print(value)
     else:
       drone = 0
