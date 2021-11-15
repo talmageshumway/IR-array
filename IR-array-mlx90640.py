@@ -93,6 +93,7 @@ while True:
     else:
       human = 0
       fever = 0
+      print('No human detected')
     if(value > drone_min and value < drone_max):
       #drone detected: alert user
       drone = 1
