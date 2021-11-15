@@ -12,7 +12,7 @@ human_max = 43
 fever_min = 38
 drone_min = 44
 drone_max = 100
-
+value = 0
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
@@ -58,6 +58,7 @@ def plot_update():
     data_array = ndimage.zoom(data_array,mlx_interp_val) # interpolate
     therm1.set_array(data_array) # set data
     therm1.set_clim(vmin=np.min(data_array),vmax=np.max(data_array)) # set bounds
+    value = np.max(data_array)
     cbar.on_mappable_changed(therm1) # update colorbar range
     plt.pause(0.001)
     ax.draw_artist(therm1) # draw new thermal image
@@ -79,17 +80,17 @@ while True:
     if len(t_array)>10:
         t_array = t_array[1:] # recent times for frame rate approx
     print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
-    hightemp=np.max(data_array)
-    if(hightemp > human_min and hightemp < human_max):
+    
+    if(value > human_min and value < human_max):
       #human: alert user
       human = 1
-      if(hightemp > fever_min):
+      if(value > fever_min):
         #human with fever: alert user
         fever = 1
     else:
       human = 0
       fever = 0
-    if(hightemp > drone_min and hightemp < drone_max):
+    if(value > drone_min and value < drone_max):
       #drone detected: alert user
       drone = 1
     else:
