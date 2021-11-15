@@ -12,6 +12,9 @@ human_max = 43
 fever_min = 38
 drone_min = 44
 drone_max = 100
+human = 0
+fever = 0
+drone = 0
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
                     const='imageMirror', help='Flip the image for selfie (default: false)')
@@ -81,25 +84,36 @@ while True:
     #print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
     
     if(value > human_min and value < human_max):
-      #human: alert user
-      human = 1
       if(value > fever_min):
         #human with fever: alert user
-        fever = 1
+        fever += 1
         print('Fever detected')
         print(value)
       else:
-        print('Human detected')
+        #human: alert user
+        human += 1
         print(value)
     else:
       human = 0
       fever = 0
-      print('No human detected')
       print(value)
     if(value > drone_min and value < drone_max):
       #drone detected: alert user
-      drone = 1
+      drone += 1
       print('Drone detected')
       print(value)
     else:
+      drone = 0
+    if(human == 4)
+      print('Human detected')
+      human = 0
+    if(fever == 4)
+      print('Fever detected')
+      fever = 0
+    if(drone == 2)
+      print('Drone detected')
+      drone = 0    
+    if(count == 100)
+      human = 0
+      fever = 0
       drone = 0
