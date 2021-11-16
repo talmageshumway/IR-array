@@ -7,7 +7,7 @@ from scipy import ndimage
 import argparse
 
 # define range
-human_min = 33
+human_min = 31
 human_max = 43
 fever_min = 38
 drone_min = 44
