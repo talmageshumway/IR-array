@@ -9,7 +9,7 @@ import argparse
 # define range
 human_min = 31
 human_max = 43
-fever_min = 38
+fever_min = 37.5
 drone_min = 44
 drone_max = 100
 human = 0
