@@ -1,10 +1,13 @@
 #! /usr/bin/python3
 import time,board,busio
+from pushbullet import Pushbullet
 import numpy as np
 import adafruit_mlx90640
 import matplotlib.pyplot as plt
 from scipy import ndimage
 import argparse
+pb = Pushbullet("o.8eEBU6IJpjunuynoiwBLo9AIS3Fo9MZE")
+print(pb.devices)
 
 # define range
 human_min = 31
@@ -83,15 +86,15 @@ while True:
     if len(t_array)>10:
         t_array = t_array[1:] # recent times for frame rate approx
     #print('Frame Rate: {0:2.1f}fps'.format(len(t_array)/np.sum(t_array)))
-    
+    #input device to be notified
+    dev = pb.get_device('')
     if(value > human_min and value < human_max):
       if(value > fever_min):
-        #human with fever: alert user
+        #human with fever
         fever += 1
-        print('Fever detected')
         print(value)
       else:
-        #human: alert user
+        #human
         human += 1
         print(value)
     else:
@@ -99,20 +102,25 @@ while True:
       fever = 0
       print(value)
     if(value > drone_min and value < drone_max):
-      #drone detected: alert user
+      #drone
       drone += 1
-      print('Drone detected')
       print(value)
     else:
       drone = 0
     if(human == 4):
+      #human: alert user
       print('Human detected')
+      push = dev.push_note("Alert!","Entryway human detection")
       human = 0
     if(fever == 4):
+      #human with fever: alert user
       print('Fever detected')
+      push = dev.push_note("Alert!","Entryway fever detection")
       fever = 0
     if(drone == 2):
+      #drone detected: alert user
       print('Drone detected')
+      push = dev.push_note("Alert!","Entryway drone detection")
       drone = 0    
     if(count == 100):
       human = 0
