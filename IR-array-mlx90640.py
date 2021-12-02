@@ -15,9 +15,11 @@ human_max = 43
 fever_min = 37.5
 drone_min = 44
 drone_max = 100
+#fire temp ranges from 200 to 1650 C
 human = 0
 fever = 0
 drone = 0
+fire = 0
 count = 0
 parser = argparse.ArgumentParser(description='Thermal Camera Program')
 parser.add_argument('--mirror', dest='imageMirror', action='store_const', default='false',
@@ -107,6 +109,12 @@ while True:
       print(value)
     else:
       drone = 0
+    if(value > drone_max):
+      #possible fire
+      fire += 1
+      print(value)
+    else:
+      fire = 0
     if(human == 4):
       #human: alert user
       print('Human detected')
@@ -122,6 +130,12 @@ while True:
       print('Drone detected')
       push = pb.push_note("Alert!","Entryway drone detection")
       drone = 0    
+    if(fire == 4):
+      #fire detected: alert user
+      print('Fire detected')
+      push = pb.push_note("Alert!","Possible fire detection")
+      fire = 0    
+
     if(count == 100):
       human = 0
       fever = 0
