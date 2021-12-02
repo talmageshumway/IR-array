@@ -140,4 +140,5 @@ while True:
       human = 0
       fever = 0
       drone = 0
+      fire = 0
     count += 1
