@@ -6,7 +6,7 @@ import adafruit_mlx90640
 import matplotlib.pyplot as plt
 from scipy import ndimage
 import argparse
-pb = Pushbullet("o.h5n1DNMmwsjMJ3v5OJeCHgh6bFsTe9J0")
+pb = Pushbullet("o.fDcFEJQb9GasabSy6NDyoANxe4yHLA2J")
 print(pb.devices)
 
 # define range
