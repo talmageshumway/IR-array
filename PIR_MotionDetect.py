@@ -48,14 +48,14 @@ def main():
                 value = remote_device.get_adc_value(IOLINE_IN)
                 #Motionless values sat at about 550 most of the time, motion was about 1050. 650 is safe limit
                 if value > 650:
-                    for x in range(1,5):
+                    for x in range(1,4):
                         value = remote_device.get_adc_value(IOLINE_IN)
                         if value < 650: break
-                        elif x == 4: 
+                        elif x == 3: 
                             print("Intruder detected!")
                             push = pb.push_note("Alert!","Intruder detected at node1!")
-
-                time.sleep(0.2)
+                            time.sleep(10)
+                time.sleep(0.4)
 
         th = threading.Thread(target=read_adc_task)
 
