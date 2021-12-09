@@ -51,8 +51,9 @@ def main():
                     for x in range(1,5):
                         value = remote_device.get_adc_value(IOLINE_IN)
                         if value < 650: break
-                        elif x == 4: print("Intruder detected!")
-						push = pb.push_note("Alert!","Intruder detected at node1!")
+                        elif x == 4: 
+                            print("Intruder detected!")
+                            push = pb.push_note("Alert!","Intruder detected at node1!")
 
                 time.sleep(0.2)
 
